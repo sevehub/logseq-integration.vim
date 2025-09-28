@@ -29,12 +29,9 @@ def LogseqTODO()
     echoerr 'Buffer "__REST_response__" not found'
     return
   endif
-  #var range = "'<,'>"
   var range = ":%"
   execute 'buffer ' .. buf
   setlocal modifiable
-  # Apply jq + inline awk pipeline to the whole buffer
-  #execute "normal! ggVG"
   dir = fnamemodify(graph_path, ':h:t')
   var cmd = "!jq '.[] | {content, pageName: .page.name}'"
         .. " | jq -s '.'"
@@ -43,3 +40,5 @@ def LogseqTODO()
   #     .. " | sort"
   execute range .. cmd
 enddef
+
+#  Copyright (C) 2025  SeveTech
